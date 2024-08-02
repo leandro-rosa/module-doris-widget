@@ -1,0 +1,68 @@
+<?php
+/**
+ * Leandro Rosa
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Doris Module to newer
+ * versions in the future. If you wish to customize it for your
+ * needs please refer to https://developer.adobe.com/commerce/docs/ for more information.
+ *
+ * @category LeandroRosa
+ *
+ * @copyright Copyright (c) 2024 Leandro Rosa (https:www.rosa-planet.com.br)
+ *
+ * @author Leandro Rosa <dev.leandrorosa@gmail.com>
+ */
+declare(strict_types=1);
+
+/**
+ * @var \LeandroRosa\DorisWidget\Block\InjectButton $block
+ * @see \LeandroRosa\DorisWidget\Block\InjectButton
+ */
+?>
+<!--
+/**
+ * Copyright © Leandro Rosa
+ */
+-->
+<?php
+/** @var \LeandroRosa\Core\Helper\DorisCoreConfiguration $dorisCoreConfig */
+$dorisCoreConfig = $this->helper(\LeandroRosa\Core\Helper\DorisCoreConfiguration::class);
+
+/** @var \LeandroRosa\DorisWidget\Helper\Configuration $dorisWidgetConfig */
+
+$dorisWidgetConfig = $this->helper(\LeandroRosa\DorisWidget\Helper\Configuration::class);
+?>
+
+<?php if ($dorisWidgetConfig->isEnable() && $block->getProductBySession() && $block->getProduct()->getTypeId() === 'configurable'): ?>
+    <div id="doris-widget"></div>
+    <div data-bind="scope: 'doris-inject-button'" id="doris-trigger-wrapper"></div>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "doris-inject-button": {
+                            "component": "LeandroRosa_DorisWidget/js/inject-button",
+                            "options": {
+                                "parent_sku": "<?= $block->getProductBySession()->getSku() ?>",
+                                "product_variations": <?= $block->getProductVariationsJsonConfig() ?>,
+                                "color_attribute": <?= $block->getColorAttribute() ?>,
+                                "size_attribute": <?= $block->getSizeAttribute() ?>,
+                                "apiKey": "<?= $dorisCoreConfig->getDorisApiKey() ?>",
+                                "showBadge": <?= $dorisWidgetConfig->shouldShowBadge() ?>,
+                                "validateSku": <?= $dorisWidgetConfig->shouldValidateSku() ?>,
+                                "backgroundImages": <?= \json_encode($dorisWidgetConfig->getBackgroundImages()) ?>,
+                                "description": "<?= $dorisWidgetConfig->getDescription() ?>"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

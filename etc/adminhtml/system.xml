@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Leandro Rosa
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Doris Module to newer
+ * versions in the future. If you wish to customize it for your
+ * needs please refer to https://developer.adobe.com/commerce/docs/ for more information.
+ *
+ * @category LeandroRosa
+ *
+ * @copyright Copyright (c) 2024 Leandro Rosa (https:www.rosa-planet.com.br)
+ *
+ * @author Leandro Rosa <dev.leandrorosa@gmail.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="doris_widget" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Doris Widget</label>
+            <tab>doris</tab>
+            <resource>LeandroRosa_DorisWidget::config</resource>
+            <group id="init" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Init Options</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="color" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Color</label>
+                </field>
+                <field id="splash_image" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Splash Image</label>
+                </field>
+                <field id="use_totem_experience" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Use Doris Totem Experience</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="use_widget_in_right_position" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Use Doris Widget in right position?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="inject_button" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Inject Button Options</label>
+                <field id="validate_sku" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Validate SKU</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="show_badge" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Show Badge</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="description" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Description</label>
+                </field>
+
+                <field id="background_images" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Background Images</label>
+                    <frontend_model>LeandroRosa\DorisWidget\Block\Adminhtml\Form\Field\BackgroundImages</frontend_model>
+                    <backend_model>LeandroRosa\DorisWidget\Model\SourceModel\Config\Backend\BackgroundImages</backend_model>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

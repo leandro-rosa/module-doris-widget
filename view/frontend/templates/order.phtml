@@ -1,0 +1,49 @@
+<?php
+/**
+ * Leandro Rosa
+ *
+ * NOTICE OF LICENSE
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Doris Module to newer
+ * versions in the future. If you wish to customize it for your
+ * needs please refer to https://developer.adobe.com/commerce/docs/ for more information.
+ *
+ * @category LeandroRosa
+ *
+ * @copyright Copyright (c) 2024 Leandro Rosa (https:www.rosa-planet.com.br)
+ *
+ * @author Leandro Rosa <dev.leandrorosa@gmail.com>
+ */
+declare(strict_types=1);
+
+/**
+ * @var \LeandroRosa\DorisWidget\Block\Order $block
+ * @see \LeandroRosa\DorisWidget\Block\Order
+ */
+?>
+
+<?php
+/** @var \LeandroRosa\DorisWidget\Helper\Configuration $helper */
+$helper = $this->helper(\LeandroRosa\DorisWidget\Helper\Configuration::class);
+?>
+
+<?php if ($helper->isEnable()): ?>
+    <div data-bind="scope: 'doris-order'"></div>
+
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "doris-order": {
+                            "component": "LeandroRosa_DorisWidget/js/order",
+                            "options": { "order_payload": <?= $block->getJsonConfig() ?> }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

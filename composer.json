@@ -1,0 +1,21 @@
+{
+  "name": "leandrorosa/module-doris-widget",
+  "version": "1.0.0",
+  "description": "Doris Widget module",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-catalog": "*"
+  },
+  "license": [
+    "Proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "LeandroRosa\\Widget\\": ""
+    }
+  }
+}
